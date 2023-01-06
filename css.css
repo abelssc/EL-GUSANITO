@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.tablero{
+    margin: auto;
+    display: grid;
+    width: 1200px;
+    grid-template-columns: repeat(60,20px);
+    background-color: black;
+}
+.celda{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #222;
+}
+.celda[data-value="1"]{
+    background-color: white;
+    border: none;
+}
+.celda[data-value="0"]{
+    background-color: none;
+  
+}
