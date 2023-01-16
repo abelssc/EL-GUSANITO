@@ -1,7 +1,22 @@
+:root{
+    --cota-fila:10;
+    --cota-col:20;
+    --ancho-celda:60px;
+}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+   
+}
+h1{
+    margin-top: 100px ;
+    color: white;
+}
+button{
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 body{
     min-height: 100vh;
@@ -10,17 +25,19 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #111;
 }
 .tablero{
     margin: auto;
     display: grid;
-    width: 1200px;
-    grid-template-columns: repeat(60,20px);
+    width: var(--cota-col*--ancho-celda);
+    grid-template-columns: repeat(var(--cota-col),var(--ancho-celda));
     background-color: black;
+    border: 1px solid black;
 }
 .celda{
-    width: 20px;
-    height: 20px;
+    width: var(--ancho-celda);
+    height: var(--ancho-celda);
     border: 1px solid #222;
 }
 .celda[data-value="1"]{
@@ -30,4 +47,65 @@ body{
 .celda[data-value="0"]{
     background-color: none;
   
+}
+.celda[data-value="apple"]{
+    background-color: red;
+    border-radius: 50%;
+}
+.celda.cabeza{
+    position: relative;
+}
+.cabeza::before,.cabeza::after{
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.cabeza[data-arrow="ArrowUp"]{
+    border-radius: 50% 50% 0 0;
+}
+.cabeza[data-arrow="ArrowUp"]::before{
+    left: 15%;
+    top: 20%;
+}
+.cabeza[data-arrow="ArrowUp"]::after{
+    right: 15%;
+    top: 20%;
+}
+.cabeza[data-arrow="ArrowLeft"]{
+    border-radius: 50% 0 0 50%;
+}
+.cabeza[data-arrow="ArrowLeft"]::before{
+    top: 15%;
+    left: 20%;
+}
+.cabeza[data-arrow="ArrowLeft"]::after{
+    bottom: 15%;
+    left: 20%;
+}
+.cabeza[data-arrow="ArrowDown"]{
+    border-radius: 0 0 50% 50%;
+}
+.cabeza[data-arrow="ArrowDown"]::before{
+    left: 15%;
+    bottom: 20%;
+}
+.cabeza[data-arrow="ArrowDown"]::after{
+    right: 15%;
+    bottom: 20%;
+}
+.cabeza[data-arrow="ArrowRight"]{
+    border-radius: 0 50% 50% 0;
+}
+.cabeza[data-arrow="ArrowRight"]::before{
+    top: 15%;
+    right: 20%;
+}
+.cabeza[data-arrow="ArrowRight"]::after{
+    bottom: 15%;
+    right: 20%;
 }
